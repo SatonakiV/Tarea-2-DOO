@@ -1,27 +1,24 @@
-import java.time.Instant;
+import java.time.LocalTime;
 
 public class Invitacion {
-    private Instant hora;
-
+    private LocalTime hora;
     private Invitable invitado;
 
-    public Invitacion(Instant hora, Invitable invitado) {
+    public Invitacion(LocalTime hora, Invitable invitado) {
+        this.hora = hora;      // Ahora sí guarda la hora que le pasas
         this.invitado = invitado;
-        this.hora = Instant.now();
-
     }
 
-    public Instant getHora() {
+    public LocalTime getHora() {
         return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
     }
 
     public Invitable getInvitado() {
         return invitado;
-    }
-
-    public void setHora(Instant hora) {
-        this.hora = hora;
-
     }
 
     public void setInvitado(Invitable invitado) {
