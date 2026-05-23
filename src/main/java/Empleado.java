@@ -67,4 +67,12 @@ public class Empleado implements Invitable {
         }
         return "Empleado: " + nombre + " " + apellidos + " (ID: " + id + ") - Depto: " + nombreDepto;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Empleado empleado = (Empleado) obj;
+        return id.equals(empleado.id); // Dos empleados son iguales si su ID es igual
+    }
 }

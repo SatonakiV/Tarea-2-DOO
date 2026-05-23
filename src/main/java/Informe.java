@@ -15,7 +15,7 @@ public class Informe {
             Informe_Reunion.write(texto);
 
             Informe_Reunion.write("\n Notas de la reunion: ");
-
+            contenido.sort((n1, n2) -> n1.getHoraAnotacion().compareTo(n2.getHoraAnotacion()));
             for(Nota n: contenido){
                 Informe_Reunion.write("\n - " + n.toString());
             }
