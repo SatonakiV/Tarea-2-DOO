@@ -184,21 +184,40 @@ abstract class Reunion {
         this.notas.add(nota);
     }
     @Override
-    public String toString(){
-        return "Detalles de la Reunion"
-                + "\nFecha: " + fecha +
-                "\nHora Prevista: " + horaPrevista +
-                "\nDuracion Prevista: " + duracionPrevista.toMinutes() + "Minutos" +
-                "\nTipo de Reunion: " + tipoReunion.getTipo() +
-                "\nOrganizador: " + organizador.getNombre() +
-                "\nHora de inicio: " + (horaInicio != null ? horaInicio : "Aun no inicia esta reunion...") +
-                "\nHora de final: " + (horaFin != null ? horaFin : "La reunion aun no termina...") +
-                "\nEstadisticas de la reunion: " +
-                "\n Asistencia total: " + getNumeroAsistencias() +
-                "\n Ausentes: " + getAusencias().size() +
-                "\n Porcentaje de asistencia: " + getPorcentajeAsistencia();
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("=== Detalles de la Reunion ===\n");
+        sb.append("Fecha: ").append(fecha).append("\n");
+        sb.append("Hora Prevista: ").append(horaPrevista).append("\n");
+        sb.append("Duracion Prevista: ").append(duracionPrevista.toMinutes()).append(" Minutos\n");
+        sb.append("Tipo de Reunion: ").append(tipoReunion).append("\n");
+        sb.append("Organizador: ").append(organizador.getNombre()).append(" ").append(organizador.getApellidos()).append("\n");
+        sb.append("Hora de inicio: ").append(horaInicio != null ? horaInicio : "Aun no inicia...").append("\n");
+        sb.append("Hora de final: ").append(horaFin != null ? horaFin : "Aun no termina...").append("\n");
 
+        sb.append("\n--- Lista de Asistentes ---\n");
+        if (asistencias.isEmpty()) {
+            sb.append("No hay registros de asistencia aún.\n");
+        } else {
+            for (Asistencia as : asistencias) {
+                sb.append("- ").append(as.toString()).append("\n");
+            }
+        }
 
+        sb.append("\n--- Lista de Ausentes ---\n");
+        ArrayList<Invitable> ausentes = getAusencias();
+        if (ausentes.isEmpty()) {
+            sb.append("No hay ausentes (o no se han enviado invitaciones).\n");
+        } else {
+            for (Invitable inv : ausentes) {
+                sb.append("- ").append(inv.toString()).append("\n");
+            }
+        }
+
+        sb.append("\n--- Estadisticas ---\n");
+        sb.append("Asistencia total: ").append(getNumeroAsistencias()).append("\n");
+        sb.append("Porcentaje de asistencia: ").append(String.format("%.1f", getPorcentajeAsistencia())).append("%\n");
+
+        return sb.toString();
     }
-
 }
