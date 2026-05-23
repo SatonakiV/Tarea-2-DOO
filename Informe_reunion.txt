@@ -1,0 +1,23 @@
+=== Detalles de la Reunion ===
+Fecha: 2026-05-23
+Hora Prevista: 15:00
+Duracion Prevista: 45 Minutos
+Tipo de Reunion: TECNICA
+Organizador: Ada Lovelace
+Hora de inicio: Aun no inicia...
+Hora de final: Aun no termina...
+
+--- Lista de Asistentes ---
+No hay registros de asistencia aún.
+
+--- Lista de Ausentes ---
+No hay ausentes (o no se han enviado invitaciones).
+
+--- Estadisticas ---
+Asistencia total: 0
+Porcentaje de asistencia: NaN%
+
+Modalidad: Virtual
+Enlace: meet.google.com/abc
+ Notas de la reunion: 
+ - Anotación hecha a las [2026-05-23T23:05:41.129255400Z] - El sistema no debe fallar al compilar.
