@@ -2,9 +2,14 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
+/**
+ * Clase encargada de crear un archivo de texto con el informe de la reunion.
+ */
 public class Informe {
-
+    /**
+     * Genera un archivo .txt con los datos de la reunion y sus notas ordenadas por hora.
+     * @param reunion La reunion de la cual se hara el informe.
+     */
     public void generarTxt(Reunion reunion){
 
         String texto = reunion.toString();
