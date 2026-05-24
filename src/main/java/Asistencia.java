@@ -31,7 +31,7 @@ public class Asistencia {
 
     /**
      * Genera un texto indicando que el participante esta presente
-     * @return Un string con la palabra presente y los datos del participante.
+     * @return Un String con la palabra presente y los datos del participante.
      */
 
     @Override
