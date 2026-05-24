@@ -3,7 +3,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-
+/**
+ * Clase abstracta base que representa una reunion general.
+ * Contiene la logica comun para manejar invitados, asistencia y estadisticas.
+ */
 abstract class Reunion {
     private LocalDate fecha;
     private LocalTime horaPrevista;
@@ -19,7 +22,14 @@ abstract class Reunion {
     private Empleado organizador;
     private tipoReunion tipoReunion;
 
-
+    /**
+     * Constructor de la clase abstracta Reunion.
+     * @param fecha La fecha programada.
+     * @param horaPrevista La hora de inicio prevista.
+     * @param duracionPrevista La duracion estimada en minutos.
+     * @param organizador El empleado que organiza la reunion.
+     * @param tipoReunion El tipo de reunion (ej. operativa, estrategica).
+     */
     public Reunion(LocalDate fecha, LocalTime horaPrevista, Duration duracionPrevista, Empleado organizador, tipoReunion tipoReunion) {
         this.invitaciones = new ArrayList<>();
         this.asistencias = new ArrayList<>();
@@ -34,19 +44,31 @@ abstract class Reunion {
 
 
     //Metodos
+
+    /**
+     * Registra la hora real de inicio de la reunion.
+     */
     public void inicio(){
         horaInicio = LocalTime.now();
 
     }
-
+    /**
+     * Registra la hora real de finalizacion de la reunion.
+     */
     public void finalizar(){
         horaFin = LocalTime.now();
     }
-
+    /**
+     * Retorna la lista completa de asistencias registradas.
+     * @return Un ArrayList de objetos Asistencia.
+     */
     public ArrayList<Asistencia> getAsistencias() {
         return asistencias;
     }
-
+    /**
+     * Filtra y devuelve solo los casos donde hubo retrasos.
+     * @return Un ArrayList con los objetos de tipo Retraso.
+     */
     public ArrayList<Retraso> getRetrasos(){
         ArrayList<Retraso> retrasos = new ArrayList<>();
         for(Asistencia as: asistencias){
@@ -57,7 +79,10 @@ abstract class Reunion {
         }
         return retrasos;
     }
-
+    /**
+     * Calcula qué invitados no registraron asistencia.
+     * @return Una lista con los participantes ausentes.
+     */
     public ArrayList<Invitable> getAusencias() {
         ArrayList<Invitable> Ausentes = new ArrayList<>();
         for (Invitacion invitacione : invitaciones) {
@@ -79,21 +104,32 @@ abstract class Reunion {
 
         return Ausentes;
     }
-
+    /**
+     * Obtiene la cantidad total de asistentes.
+     * @return El numero total de asistencias.
+     */
     public int getNumeroAsistencias(){
         return asistencias.size();
     }
-
+    /**
+     * Calcula el porcentaje de asistencia respecto al total de invitaciones.
+     * @return El porcentaje de asistencia como un numero float.
+     */
     public float getPorcentajeAsistencia(){
         return (float) ((float)asistencias.size() / invitaciones.size()) * 100;
     }
-
+    /**
+     * Calcula la duracion real de la reunion (fin - inicio).
+     * @return La duracion total como un objeto Duration.
+     */
     public Duration calculoTiempoReal(){
         return Duration.between(horaInicio, horaFin);
     }
 
     //Getters y setters
-
+    /**
+     * Metodos Getters y Setters para los atributos de la clase.
+     */
     public LocalDate getFecha() {
         return fecha;
     }
@@ -169,7 +205,9 @@ abstract class Reunion {
     public void setDuracionPrevista(Duration duracionPrevista) {
         this.duracionPrevista = duracionPrevista;
     }
-
+    /**
+     * Metodos para agregar informacion a las listas.
+     */
     //Metodos add
 
     public void agregarInvitacion(Invitacion invitacion){
@@ -183,6 +221,10 @@ abstract class Reunion {
     public void agregarNota(Nota nota){
         this.notas.add(nota);
     }
+    /**
+     * Genera un reporte completo de la reunion, incluyendo asistencias, ausentes y estadisticas.
+     * @return Un string con toda la informacion formateada.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

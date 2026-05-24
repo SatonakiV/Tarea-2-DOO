@@ -1,4 +1,11 @@
+/**
+ * Clase principal utilizada para probar el codigo de la tarea.
+ */
 public class Main {
+    /**
+     * Metodo de entrada del programa donde se ejecutan las pruebas.
+     * @param args Argumentos de la linea de comandos.
+     */
     public static void main(String[] args) {
         System.out.println("=== INICIO DE PRUEBAS TAREA 2 ===");
 
